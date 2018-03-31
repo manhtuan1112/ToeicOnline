@@ -30,7 +30,7 @@ public class UserEntity {
     @JoinColumn(name = "roleid")
     private RoleEntity roleEntity;
 
-    @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "userEntity",fetch = FetchType.LAZY)
     private List<CommentEntity> commentEntityList;
 
     public Integer getUserId() {
