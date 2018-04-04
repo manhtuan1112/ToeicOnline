@@ -23,18 +23,17 @@ public class AbtstractDao<ID extends Serializable,T> implements GenericDao<ID,T>
     public String getPersistenceClassName(){
         return persistenceClass.getSimpleName();
     }
-    protected Session getSession(){
-        return HibernateUtil.getSessionFactory().openSession();
-    }
+
     public List findAll() {
         List<T> list=new ArrayList<T>();
-        Transaction transaction=null;
+
+            Session session=HibernateUtil.getSessionFactory().openSession();
+            Transaction transaction=session.beginTransaction();
         try{
-            transaction=getSession().beginTransaction();
             //HQL
             StringBuilder sql=new StringBuilder("from ");
             sql.append(this.getPersistenceClassName());
-            Query query=this.getSession().createQuery(sql.toString());
+            Query query=session.createQuery(sql.toString());
             list=query.list();
             transaction.commit();
 
@@ -42,6 +41,27 @@ public class AbtstractDao<ID extends Serializable,T> implements GenericDao<ID,T>
             transaction.rollback();
             throw e;
         }
+        finally {
+            session.close();
+        }
         return list;
+    }
+
+    public T update(T entity) {
+        T result=null;
+        Session session=HibernateUtil.getSessionFactory().openSession();
+        Transaction transaction=session.beginTransaction();
+        try{
+            Object object=session.merge(entity);
+            result =(T)object;
+            transaction.commit();
+        }catch (HibernateException e){
+            transaction.rollback();
+            throw e;
+        }
+        finally {
+            session.close();
+        }
+        return null;
     }
 }
