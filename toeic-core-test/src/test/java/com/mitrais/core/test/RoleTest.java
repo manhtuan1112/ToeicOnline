@@ -26,4 +26,21 @@ public class RoleTest {
         roleDao.update(entity);
     }
 
+    @Test
+    public void checkSaveRole(){
+        RoleDao roleDao=new RoleDaoImpl();
+        RoleEntity entity=new RoleEntity();
+        entity.setRoleId(4);
+        entity.setName("USER_2");
+        roleDao.save(entity);
+    }
+
+    @Test
+    public void checkFindById(){
+        RoleDao roleDao=new RoleDaoImpl();
+        RoleEntity entity=roleDao.findById(1);
+        System.out.println(entity.getName());
+    }
+
+
 }
