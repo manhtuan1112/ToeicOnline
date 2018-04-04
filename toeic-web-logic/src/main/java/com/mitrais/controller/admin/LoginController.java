@@ -11,15 +11,14 @@ import java.io.IOException;
 /**
  * Created by duongtuan1211 on 4/4/2018.
  */
-@WebServlet("/admin-home.html")
-public class AdminController extends HttpServlet {
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-        RequestDispatcher rd = request.getRequestDispatcher("/views/admin/home.jsp");
+@WebServlet("/login.html")
+public class LoginController extends HttpServlet {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher rd = request.getRequestDispatcher("/views/web/login.jsp");
         rd.forward(request,response);
     }
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 
     }
-
 }
+
