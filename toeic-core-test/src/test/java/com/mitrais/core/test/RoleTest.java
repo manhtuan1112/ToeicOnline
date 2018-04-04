@@ -5,6 +5,7 @@ import com.mitrais.core.daoimpl.RoleDaoImpl;
 import com.mitrais.core.persistence.entity.RoleEntity;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -40,6 +41,15 @@ public class RoleTest {
         RoleDao roleDao=new RoleDaoImpl();
         RoleEntity entity=roleDao.findById(1);
         System.out.println(entity.getName());
+    }
+
+    @Test
+    public void checkDelete(){
+        List<Integer> listId= new ArrayList<Integer>();
+        listId.add(3);
+        listId.add(4);
+        RoleDao roleDao=new RoleDaoImpl();
+        Integer count = roleDao.delete(listId);
     }
 
 
