@@ -5,7 +5,9 @@
   Time: 10:42 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8" %>
+<%@ include file="/common/taglib.jsp"%>
+
 <html>
 <head>
     <title>Login Page</title>
@@ -16,7 +18,7 @@
         <div class="widget-main">
             <h4 class="header blue lighter bigger">
                 <i class="ace-icon fa fa-coffee green"></i>
-                Please Enter Your Information
+                <fmt:message key="label.test" bundle="${lang}"/>
             </h4>
 
             <div class="space-6"></div>
